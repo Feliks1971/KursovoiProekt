@@ -1,0 +1,46 @@
+﻿<Window x:Class="KursovoiProekt.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KursovoiProekt"
+         xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF">
+    
+      <Window.DataContext>
+        <local:ViewModel/>
+    </Window.DataContext>
+    <TabControl>
+        <TabItem x:Name="UsdCad">
+            <TabItem.Header>
+                <StackPanel Orientation="Horizontal">
+                    <Ellipse Height="10" Width="10" Fill="Black" />
+                    <TextBlock Margin="3">UsdCad</TextBlock>
+                </StackPanel>
+            </TabItem.Header>
+            <Grid>
+        <lvc:CartesianChart  Width="Auto" Height="Auto"
+           Series="{Binding Series}"
+           YAxes="{Binding YAxes}"
+           XAxes="{Binding XAxes}"          
+           ZoomMode="X">
+        </lvc:CartesianChart>
+    </Grid>
+        </TabItem>
+        <TabItem x:Name="GbpUsd">
+            <TabItem.Header>
+                <StackPanel Orientation="Horizontal">
+                    <Ellipse Height="10" Width="10" Fill="Black" />
+                    <TextBlock Margin="3">GbpUsd</TextBlock>
+                </StackPanel>
+            </TabItem.Header>
+            <Grid>
+                <lvc:CartesianChart  Width="Auto" Height="Auto"
+       Series="{Binding Series1}"
+       YAxes="{Binding YAxes}"
+       XAxes="{Binding XAxes}"          
+       ZoomMode="X">
+                </lvc:CartesianChart>
+            </Grid>
+        </TabItem>
+    </TabControl>
+</Window>

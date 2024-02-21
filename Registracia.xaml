@@ -1,0 +1,165 @@
+﻿<Window x:Class="KursovoiProekt.Registracia"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KursovoiProekt"
+        mc:Ignorable="d"
+         Width="300" WindowStyle="None" ResizeMode="NoResize" SizeToContent="Height"
+        WindowStartupLocation="CenterScreen" WindowState="Normal">
+    <!--определяем стили-->
+    <Window.Resources>
+        <!--стиль для кнопок-->
+        <Style TargetType="Button">
+            <Setter Property="FontFamily" Value="Cambria" />
+            <Setter Property="Background" Value="#FF3087EA" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="Height" Value="25" />
+            <Setter Property="Width" Value="250" />
+            <Setter Property="Margin" Value="0,20,0,3" />
+            <Setter Property="Grid.Row" Value="9" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Cursor" Value="Hand" />
+        </Style>
+        <!--стиль для passwordbox-->
+        <Style TargetType="PasswordBox">
+            <Setter Property="Background" Value="White" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="Height" Value="25" />
+            <Setter Property="Width" Value="250" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Opacity" Value="0.5" />
+        </Style>
+        <!--стиль для textbox-->
+        <Style TargetType="TextBox">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="Height" Value="25" />
+            <Setter Property="Width" Value="250" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Opacity" Value="0" />
+        </Style>
+        <!--стиль для Image-->
+        <Style TargetType="Image">
+            <Setter Property="HorizontalAlignment" Value="Right" />
+            <Setter Property="Margin" Value="0,0,25,0" />
+            <Setter Property="Height" Value="25" />
+            <Setter Property="Width" Value="25" />
+        </Style>
+        <!--1-й стиль для textblock-->
+        <Style x:Key="TB1">
+            <Setter Property="Control.FontFamily" Value="Segoe UI" />
+            <Setter Property="Control.FontSize" Value="12" />
+            <Setter Property="Control.Height" Value="16" />
+            <Setter Property="Control.Width" Value="250" />
+            <Setter Property="Control.Foreground" Value="#FF051867" />
+            <Setter Property="Control.Margin" Value="0,10,0,0" />
+         </Style>
+        <!--2-й стиль для textblock-->
+        <Style x:Key="TB2">
+            <Setter Property="TextBlock.FontFamily" Value="Segoe UI" />
+            <Setter Property="TextBlock.FontSize" Value="12" />
+            <Setter Property="TextBlock.Height" Value="25" />
+            <Setter Property="TextBlock.Width" Value="250" />
+            <Setter Property="TextBlock.Foreground" Value="#FFEF2F90" />
+            <Setter Property="TextBlock.Background" Value="White"/>
+            <Setter Property="TextBlock.Padding" Value="0,7,0,0" />
+        </Style>
+        <!--3-й стиль для textblock-->
+        <Style x:Key="TB3">
+            <Setter Property="TextBlock.FontFamily" Value="Cambria" />
+            <Setter Property="TextBlock.FontSize" Value="16" />
+            <Setter Property="TextBlock.FontWeight" Value="Bold" />
+            <Setter Property="TextBlock.Margin" Value="0,10,0,0" />
+            <Setter Property="TextBlock.Foreground" Value="#FF051867" />
+            <Setter Property="TextBlock.HorizontalAlignment" Value="Center" />
+        </Style>
+        <!--4-й стиль для textblock-->
+        <Style x:Key="TB4">
+            <Setter Property="TextBlock.FontFamily" Value="Segoe UI" />
+            <Setter Property="TextBlock.FontSize" Value="12" />
+            <Setter Property="TextBlock.TextDecorations" Value="Underline" />
+            <Setter Property="TextBlock.Foreground" Value="#FF051867" />
+            <Setter Property="TextBlock.Cursor" Value="Hand" />
+        </Style>
+    </Window.Resources>
+    <!--строки и столбец-->
+    <Grid x:Name="MyGrid" Background="#FF0DF31B">
+        <Grid.RowDefinitions >
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <!--заголовок-->
+        <TextBlock x:Name="Avtor" Text="АВТОРИЗАЦИЯ" Style="{StaticResource TB3}"/>
+        <TextBlock x:Name="Registr" Grid.Row="0" Text="РЕГИСТРАЦИЯ" Style="{StaticResource TB3}" Visibility="Collapsed"/>
+        <!--логин-->
+        <TextBlock Grid.Row="1"  Text="логин" Style="{StaticResource TB1}" />
+        <TextBlock Grid.Row="2"  Text="логин 6-20 букв и цифр без пробелов" Style="{StaticResource TB2}"/>
+        <TextBox  x:Name="TBLogin" Grid.Row="2" Visibility="Hidden"
+         GotKeyboardFocus="Txt_GotKeyboardFocus" 
+         LostKeyboardFocus="TxtLost_LostKeyboardFocus" 
+         TextChanged="TxtChanged_TextChanged" />
+        <PasswordBox x:Name="PL"  Grid.Row="2"  MaxLength ="20" 
+         GotKeyboardFocus="A_GotKeyboardFocus" 
+         LostKeyboardFocus="A1_LostKeyboardFocus"  
+         PasswordChanged="TB1_PasswordChanged"/>
+        <Image  x:Name="FORPL" Grid.Row="2" Visibility="Hidden"  MouseDown="ImgShowHide_MouseDown" />
+        <!--пароль-->
+        <TextBlock Grid.Row="3" Text="пароль для входа"  Style="{StaticResource TB1}"/>
+        <TextBlock Grid.Row="4" Text="пароль для входа 6-15 букв и цифр" Style="{StaticResource TB2}"/>
+        <TextBox  x:Name="TBParol" Grid.Row="4" Visibility="Hidden"
+         GotKeyboardFocus="Txt_GotKeyboardFocus" 
+         LostKeyboardFocus="TxtLost_LostKeyboardFocus" 
+         TextChanged="TxtChanged_TextChanged"/>
+        <PasswordBox  x:Name="PP" Grid.Row="4" MaxLength ="15" 
+         GotKeyboardFocus="A_GotKeyboardFocus" 
+         LostKeyboardFocus="A1_LostKeyboardFocus"  
+         PasswordChanged="TB1_PasswordChanged"/>
+        <Image  x:Name="FORPP" Grid.Row="4" Visibility="Hidden"  MouseDown="ImgShowHide_MouseDown" />
+        <!--подтвердить пароль-->
+        <TextBlock x:Name="TBparol" Grid.Row="5" Text="подтвердить пароль" Style="{StaticResource TB1}" Visibility="Collapsed"/>
+        <TextBlock x:Name="TBparol1" Grid.Row="6" Text="подтвердить пароль" Style="{StaticResource TB2}" Visibility="Collapsed"/>
+        <TextBox  x:Name="TBPP" Grid.Row="6" Visibility="Collapsed"
+        GotKeyboardFocus="Txt_GotKeyboardFocus" 
+        LostKeyboardFocus="TxtLost_LostKeyboardFocus" 
+        TextChanged="TxtChanged_TextChanged"/>
+        <PasswordBox  x:Name="TBparol2" Grid.Row="6" Visibility="Collapsed" MaxLength ="15" 
+         GotKeyboardFocus="A_GotKeyboardFocus" 
+         LostKeyboardFocus="A1_LostKeyboardFocus"  
+         PasswordChanged="TB1_PasswordChanged"/>
+        <Image  x:Name="FORPP2" Grid.Row="6" Visibility="Collapsed"  MouseDown="ImgShowHide_MouseDown" />
+        <!--E-mail:-->
+        <TextBlock x:Name="TBemail" Grid.Row="7" Text="e-mail:" Style="{StaticResource TB1}" Visibility="Collapsed"/>
+        <TextBlock x:Name="TBemail1"  Grid.Row="8" Text="эл.почта(формат #@#.#)" Style="{StaticResource TB2}" Visibility="Collapsed"/>
+        <TextBox  x:Name="TBE" Grid.Row="8" Visibility="Collapsed" 
+         GotKeyboardFocus="Txt_GotKeyboardFocus" 
+         LostKeyboardFocus="TxtLost_LostKeyboardFocus" 
+         TextChanged="TxtChanged_TextChanged"/>
+        <PasswordBox x:Name="TBemail2"  Grid.Row="8" Visibility="Collapsed" 
+         GotKeyboardFocus="A_GotKeyboardFocus" 
+         LostKeyboardFocus="A1_LostKeyboardFocus"  
+         PasswordChanged="TB1_PasswordChanged"/>
+        <Image  x:Name="FOREMAIL" Grid.Row="8" Visibility="Collapsed"  MouseDown="ImgShowHide_MouseDown" />
+        <!--кнопки войти и регистрация-->
+        <Button x:Name="ENT" Content="Войти" Click="ENT_Click" />
+        <Button x:Name="REG" Content="Регистрация" Visibility="Collapsed" Click="REG_Click"/>
+        <!--отмена и регистрация-->
+        <TextBlock HorizontalAlignment="Right" Margin="0,10,25,10" Grid.Row="10" Text="Отмена"  Style="{StaticResource TB4}" MouseDown="TextBlock_MouseDown" />
+        <TextBlock x:Name="Regi" HorizontalAlignment="Left" Margin="25,10,0,10" Grid.Row="10" Text="Регистрация" Style="{StaticResource TB4}" MouseDown="TextBlock_MouseDown_1" />
+    </Grid>
+    
+
+</Window>
